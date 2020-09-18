@@ -1,6 +1,8 @@
 package th.ac.ku.atm.service;
 
+import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.boot.autoconfigure.freemarker.FreeMarkerTemplateAvailabilityProvider;
 import org.springframework.stereotype.Service;
 import th.ac.ku.atm.model.Customer;
 
@@ -26,6 +28,27 @@ public class CustomerService {
 
     public List<Customer> getCustomers() {
         return new ArrayList<>(this.customerList);
+    }
+
+    public Customer findCustomer(int id) {
+        for (Customer customer: customerList) {
+            if (customer.getId() == id) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    public Customer checkPin(Customer inputCustomer) {
+        Customer storedCustomer = findCustomer(inputCustomer.getId());
+        if (storedCustomer != null) {
+            String hashPin = storedCustomer.getPin();
+
+            if (BCrypt.checkpw(inputCustomer.getPin(), hashPin)) {
+                return storedCustomer;
+            }
+        }
+        return null;
     }
 
     private String hash(String pin) {
