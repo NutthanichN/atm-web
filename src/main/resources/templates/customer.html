@@ -3,28 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Customer</title>
+  <link th:rel="stylesheet" th:href="@{css/bootstrap.min.css}">
 </head>
 <body>
+
+<div class="container">
   <h1>Register Customer</h1>
   <form th:action="@{/customer}" method="POST">
+    <div class="form-group">
+      <label for="inputId">Id</label>
+      <input type="input" class="form-control" name="id" id="inputId">
+    </div>
 
-    <label for="inputId">Id</label>
-    <input type="input" name="id" id="inputId">
+    <div class="form-group">
+      <label for="inputName">Name</label>
+      <input type="input" class="form-control" name="name" id="inputName">
+    </div>
 
-    <label for="inputName">Name</label>
-    <input type="input" name="name" id="inputName">
+    <div class="form-group">
+      <label for="inputPin">Pin</label>
+      <input type="password" class="form-control" name="pin" id="inputPin">
+    </div>
 
-    <label for="inputPin">Pin</label>
-    <input type="password" name="pin" id="inputPin">
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary">
+    </div>
 
-    <input type="submit">
   </form>
   <hr>
 
   <h1>All Customers</h1>
 
-  <table border="1px">
-    <thead>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
       <tr>
         <th>Id</th>
         <th>Name</th>
@@ -39,5 +50,7 @@
       </tr>
     </tbody>
   </table>
+</div>
 </body>
+
 </html>
