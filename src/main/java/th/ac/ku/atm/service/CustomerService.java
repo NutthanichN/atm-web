@@ -1,8 +1,6 @@
 package th.ac.ku.atm.service;
 
-import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.boot.autoconfigure.freemarker.FreeMarkerTemplateAvailabilityProvider;
 import org.springframework.stereotype.Service;
 import th.ac.ku.atm.model.Customer;
 
