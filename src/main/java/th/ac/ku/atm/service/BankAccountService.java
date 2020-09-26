@@ -59,12 +59,6 @@ public class BankAccountService {
         storedBankAccount.deposit(depositAmount);
 
         editBankAccount(storedBankAccount);
-//
-//        double newBalance =
-//                storedBankAccount.getBalance() + tempBankAccount.getBalance();
-//        tempBankAccount.setBalance(newBalance);
-//
-//        editBankAccount(tempBankAccount);
     }
 
     public void withdraw(BankAccount tempBankAccount) {
@@ -73,11 +67,6 @@ public class BankAccountService {
         storedBankAccount.withdraw(withdrawAmount);
 
         editBankAccount(storedBankAccount);
-//        double newBalance =
-//                storedBankAccount.getBalance() - tempBankAccount.getBalance();
-//        tempBankAccount.setBalance(newBalance);
-//
-//        editBankAccount(tempBankAccount);
     }
 
     public void deleteBankAccount(int id) {
