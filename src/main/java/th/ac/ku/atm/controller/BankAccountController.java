@@ -1,13 +1,10 @@
 package th.ac.ku.atm.controller;
 
-import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import th.ac.ku.atm.model.BankAccount;
 import th.ac.ku.atm.service.BankAccountService;
-
-import javax.jws.WebParam;
 
 @Controller
 @RequestMapping("/bankaccount")
@@ -46,6 +43,21 @@ public class BankAccountController {
         model.addAttribute("allBankAccounts", bankAccountService.getBankAccounts());
         return "redirect:/bankaccount";
     }
+
+    @GetMapping("/deposit/{id}")
+    public String getDepositPage(@PathVariable int id, Model model) {
+        BankAccount account = bankAccountService.getBankAccount(id);
+        model.addAttribute("bankAccount", account);
+        return "bankaccount-deposit";
+    }
+
+//    @PostMapping("/deposit/{id}")
+//    public String deposit(@PathVariable int id, @ModelAttribute BankAccount bankAccount,
+//                          Model model) {
+//        bankAccountService.editBankAccount(bankAccount);
+//        model.addAttribute("allBankAccounts", bankAccountService.getBankAccounts());
+//        return "redirect:/bankaccount";
+//    }
 
     @PostMapping("/delete/{id}")
     public String deleteAccount(@PathVariable int id, Model model) {

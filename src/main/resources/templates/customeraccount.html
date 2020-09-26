@@ -12,12 +12,16 @@
       <tr>
         <th>Type</th>
         <th>Balance</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="account : ${bankaccounts}">
         <td th:text="${account.type}"></td>
         <td th:text="${account.balance}"></td>
+        <td>
+          <a class="btn btn-primary" th:href="@{/bankaccount/deposit/{id} (id=${account.id})}">Deposit</a>
+        </td>
       </tr>
     </tbody>
   </table>
