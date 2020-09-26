@@ -51,13 +51,13 @@ public class BankAccountController {
         return "bankaccount-deposit";
     }
 
-//    @PostMapping("/deposit/{id}")
-//    public String deposit(@PathVariable int id, @ModelAttribute BankAccount bankAccount,
-//                          Model model) {
-//        bankAccountService.editBankAccount(bankAccount);
-//        model.addAttribute("allBankAccounts", bankAccountService.getBankAccounts());
-//        return "redirect:/bankaccount";
-//    }
+    @PostMapping("/deposit/{id}")
+    public String deposit(@PathVariable int id, @ModelAttribute BankAccount bankAccount,
+                          Model model) {
+        bankAccountService.deposit(bankAccount);
+        model.addAttribute("bankaccounts", bankAccountService.getBankAccounts());
+        return "redirect:/bankaccount";
+    }
 
     @PostMapping("/delete/{id}")
     public String deleteAccount(@PathVariable int id, Model model) {
