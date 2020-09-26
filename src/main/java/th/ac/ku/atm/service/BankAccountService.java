@@ -48,7 +48,7 @@ public class BankAccountService {
         return Arrays.asList(accounts);
     }
 
-    public void editBankAccount(BankAccount bankAccount) {
+    private void editBankAccount(BankAccount bankAccount) {
         String url = "http://localhost:8091/api/bankaccount/" + bankAccount.getId();
         restTemplate.put(url, bankAccount);
     }
