@@ -62,6 +62,15 @@ public class BankAccountService {
         editBankAccount(tempBankAccount);
     }
 
+    public void withdraw(BankAccount tempBankAccount) {
+        BankAccount storedBankAccount = getBankAccount(tempBankAccount.getId());
+        double newBalance =
+                storedBankAccount.getBalance() - tempBankAccount.getBalance();
+        tempBankAccount.setBalance(newBalance);
+
+        editBankAccount(tempBankAccount);
+    }
+
     public void deleteBankAccount(int id) {
         String url = "http://localhost:8091/api/bankaccount/" + id;
         restTemplate.delete(url, id);

@@ -52,9 +52,24 @@ public class BankAccountController {
     }
 
     @PostMapping("/deposit/{id}")
-    public String deposit(@PathVariable int id, @ModelAttribute BankAccount bankAccount,
+    public String deposit(@PathVariable int id, @ModelAttribute BankAccount tempBankAccount,
                           Model model) {
-        bankAccountService.deposit(bankAccount);
+        bankAccountService.deposit(tempBankAccount);
+        model.addAttribute("bankaccounts", bankAccountService.getBankAccounts());
+        return "redirect:/bankaccount";
+    }
+
+    @GetMapping("/withdraw/{id}")
+    public String getWithdrawPage(@PathVariable int id, Model model) {
+        BankAccount account = bankAccountService.getBankAccount(id);
+        model.addAttribute("bankAccount", account);
+        return "bankaccount-withdraw";
+    }
+
+    @PostMapping("/withdraw/{id}")
+    public String Withdraw(@PathVariable int id, @ModelAttribute BankAccount tempBankAccount,
+                          Model model) {
+        bankAccountService.withdraw(tempBankAccount);
         model.addAttribute("bankaccounts", bankAccountService.getBankAccounts());
         return "redirect:/bankaccount";
     }
