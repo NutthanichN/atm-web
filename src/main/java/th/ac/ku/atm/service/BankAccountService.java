@@ -55,20 +55,29 @@ public class BankAccountService {
 
     public void deposit(BankAccount tempBankAccount) {
         BankAccount storedBankAccount = getBankAccount(tempBankAccount.getId());
-        double newBalance =
-                storedBankAccount.getBalance() + tempBankAccount.getBalance();
-        tempBankAccount.setBalance(newBalance);
+        double depositAmount = tempBankAccount.getBalance();
+        storedBankAccount.deposit(depositAmount);
 
-        editBankAccount(tempBankAccount);
+        editBankAccount(storedBankAccount);
+//
+//        double newBalance =
+//                storedBankAccount.getBalance() + tempBankAccount.getBalance();
+//        tempBankAccount.setBalance(newBalance);
+//
+//        editBankAccount(tempBankAccount);
     }
 
     public void withdraw(BankAccount tempBankAccount) {
         BankAccount storedBankAccount = getBankAccount(tempBankAccount.getId());
-        double newBalance =
-                storedBankAccount.getBalance() - tempBankAccount.getBalance();
-        tempBankAccount.setBalance(newBalance);
+        double withdrawAmount = tempBankAccount.getBalance();
+        storedBankAccount.withdraw(withdrawAmount);
 
-        editBankAccount(tempBankAccount);
+        editBankAccount(storedBankAccount);
+//        double newBalance =
+//                storedBankAccount.getBalance() - tempBankAccount.getBalance();
+//        tempBankAccount.setBalance(newBalance);
+//
+//        editBankAccount(tempBankAccount);
     }
 
     public void deleteBankAccount(int id) {
